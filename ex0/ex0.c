@@ -1,17 +1,16 @@
 #include <stdio.h>
-#include <limits.h>
 
 int		main(void)
 {
 		int		n;
 		int		count;
-		int		array[10][10];
+		int		array[100][100];
 
 		n = 0;
 		count = 1;
-		printf("enter a positive non-zero number and no more than INT_MAX n = ");
+		printf("enter a positive non-zero number and no more than 100 n = ");
 		scanf("%d", &n);
-		if ((n <= 0) || (n > INT_MAX))
+		if ((n <= 0) || (n > 100))
 		{
 				printf("error\nwrong number");
 				return (0);
