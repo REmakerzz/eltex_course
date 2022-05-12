@@ -1,2 +1,2 @@
-This is the learning repository
+Learning repository
 # eltex_course
