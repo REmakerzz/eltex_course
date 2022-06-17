@@ -1,22 +1,19 @@
-#include <stdio.h>
+#include "abonent.h"
 #include <string.h>
-#define COUNT	100
-
-typedef struct		s_abonent
-{
-		long	phone_number;
-		char	name[100];
-}					t_abonent;
+#include <stdio.h>
 
 int		main(void)
 {
-		t_abonent		book[COUNT];
-		int				flag = 0;
-		int				number = 0;
-		int				k = 0;
-		char			str[100];
+	t_abonent	book[100];
+	int		flag = 0;
+	int		k = 0;
+	char	str[100];
+	FILE	*stream;
 
-		while (1)
+	stream = fopen ("base", "a+");
+	if (!stream)
+			return (-1);
+	while (1)
 		{
 			printf("\nenter 1: new contact\n");
 			printf("\nenter 2: find contact\n");
@@ -58,11 +55,15 @@ int		main(void)
 						printf("\n_________________________\n");
 						break;
 				case 4:
+						if (!fwrite (book, sizeof(t_abonent), 1, stream))
+							return (-1);
+						if (!fclose (stream))
+							return (-1);
 						return (0);
 				default:
 						printf("\nerror\ninvalid input");
 						return (1);
 			}
 		}
-		return (0);
+	return (0);
 }
